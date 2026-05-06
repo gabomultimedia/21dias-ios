@@ -1,4 +1,4 @@
-import SwiftUI
+import Foundation
 
 @MainActor
 class DashboardViewModel: ObservableObject {
@@ -46,7 +46,13 @@ class DashboardViewModel: ObservableObject {
             xpTotal = progressResult.xpTotal
         } catch {
             // Fallback to local data
-            streak = Streak(currentStreak: calculateLocalStreak(), longestStreak: 0, lastActivityDate: nil)
+            streak = Streak(
+                currentStreak: calculateLocalStreak(),
+                longestStreak: 0,
+                lastActivityDate: nil,
+                streakShields: 0,
+                streakFreezesUsed: 0
+            )
         }
         
         do {
@@ -61,11 +67,8 @@ class DashboardViewModel: ObservableObject {
     private func calculateLocalStreak() -> Int {
         guard let lastActive = userDefaults.lastActiveDate else { return 0 }
         let calendar = Calendar.current
-        let today = Date()
         
-        if calendar.isDateInToday(lastActive) {
-            return 1
-        } else if calendar.isDateInYesterday(lastActive) {
+        if calendar.isDateInToday(lastActive) || calendar.isDateInYesterday(lastActive) {
             return 1
         }
         return 0
