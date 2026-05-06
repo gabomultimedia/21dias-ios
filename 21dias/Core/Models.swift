@@ -1,5 +1,6 @@
 import Foundation
 
+// MARK: - User
 struct User: Codable {
     let id: String
     let name: String
@@ -8,6 +9,7 @@ struct User: Codable {
     let createdAt: String
 }
 
+// MARK: - Lesson
 struct Lesson: Codable, Identifiable {
     let id: String
     let dayNumber: Int
@@ -22,6 +24,7 @@ struct Lesson: Codable, Identifiable {
     let isPremium: Bool
 }
 
+// MARK: - Progress
 struct Progress: Codable {
     let completedDays: Int
     let totalDays: Int
@@ -30,12 +33,7 @@ struct Progress: Codable {
     let percentage: Double
 }
 
-struct Streak: Codable {
-    let currentStreak: Int
-    let longestStreak: Int
-    let lastActivityDate: String?
-}
-
+// MARK: - Streak
 struct Streak: Codable {
     let currentStreak: Int
     let longestStreak: Int
@@ -44,6 +42,7 @@ struct Streak: Codable {
     let streakFreezesUsed: Int
 }
 
+// MARK: - Leaderboard
 struct LeaderboardUser: Codable, Identifiable {
     let id: String
     let displayName: String
@@ -53,6 +52,7 @@ struct LeaderboardUser: Codable, Identifiable {
     let level: Int
 }
 
+// MARK: - Referral
 struct ReferralInfo: Codable {
     let referralCode: String
     let totalReferrals: Int
@@ -60,6 +60,7 @@ struct ReferralInfo: Codable {
     let rewardsEarned: Int
 }
 
+// MARK: - Live Feed
 struct LiveFeedItem: Codable, Identifiable {
     let id: String
     let dayCompleted: Int
@@ -68,6 +69,7 @@ struct LiveFeedItem: Codable, Identifiable {
     let isAnonymous: Bool
 }
 
+// MARK: - Sprint Challenge
 struct SprintChallenge: Codable, Identifiable {
     let id: String
     let title: String
@@ -79,6 +81,7 @@ struct SprintChallenge: Codable, Identifiable {
     let userJoined: Bool
 }
 
+// MARK: - Badge
 struct Badge: Codable, Identifiable {
     let id: String
     let name: String
@@ -88,6 +91,7 @@ struct Badge: Codable, Identifiable {
     let isUnlocked: Bool
 }
 
+// MARK: - Diary
 struct DiaryEntry: Codable, Identifiable {
     let id: String
     let lessonId: Int?
@@ -96,6 +100,7 @@ struct DiaryEntry: Codable, Identifiable {
     let tags: [String]?
 }
 
+// MARK: - Goals
 struct Goal: Codable, Identifiable {
     let id: String
     let title: String
@@ -103,6 +108,7 @@ struct Goal: Codable, Identifiable {
     let createdAt: String
 }
 
+// MARK: - Eisenhower Tasks
 struct EisenhowerTask: Codable, Identifiable {
     let id: String
     let title: String
@@ -110,6 +116,7 @@ struct EisenhowerTask: Codable, Identifiable {
     let completed: Bool
 }
 
+// MARK: - Wheel of Life
 struct WheelOfLife: Codable {
     let health: Int
     let relationships: Int
@@ -117,8 +124,9 @@ struct WheelOfLife: Codable {
     let career: Int
     let personalDev: Int
     let spirituality: Int
-    
-    init(health: Int = 5, relationships: Int = 5, finances: Int = 5, career: Int = 5, personalDev: Int = 5, spirituality: Int = 5) {
+
+    init(health: Int = 5, relationships: Int = 5, finances: Int = 5,
+         career: Int = 5, personalDev: Int = 5, spirituality: Int = 5) {
         self.health = health
         self.relationships = relationships
         self.finances = finances
@@ -128,6 +136,7 @@ struct WheelOfLife: Codable {
     }
 }
 
+// MARK: - API Responses
 struct AuthResponse: Codable {
     let token: String
     let user: User
@@ -151,4 +160,19 @@ struct GoalsResponse: Codable {
 
 struct EisenhowerResponse: Codable {
     let tasks: [EisenhowerTask]
+}
+
+// MARK: - Partners / Accountability
+struct AccountabilityPartner: Codable, Identifiable {
+    let id: String
+    let partnerId: String
+    let partnerName: String
+    let partnerStreak: Int
+    let partnerActiveToday: Bool
+    let status: String
+    let createdAt: String
+}
+
+struct PartnersResponse: Codable {
+    let partners: [AccountabilityPartner]
 }

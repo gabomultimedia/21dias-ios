@@ -65,8 +65,10 @@ enum APIEndpoint {
     
     var method: String {
         switch self {
-        case .login, .register, .completeLesson, .createDiaryEntry, .saveWheelOfLife, .createGoal, .createTask, .subscribe:
+        case .login, .register, .completeLesson, .createDiaryEntry, .saveWheelOfLife, .createGoal, .createTask, .subscribe, .invitePartner, .joinSprint, .updateSettings:
             return "POST"
+        case .removePartner:
+            return "DELETE"
         default:
             return "GET"
         }
