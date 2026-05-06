@@ -1,0 +1,18 @@
+// Configuration for 21 Días iOS App
+// Copy this to Config.xcconfig and configure as needed
+
+#include "Pods/Target Support Files/Pods-21dias/Pods-21dias.release.xcconfig"
+
+// API Configuration
+API_BASE_URL = https://api.21dias.app
+// For local development:
+// API_BASE_URL = http://192.168.1.100:3000
+
+// Bundle ID
+PRODUCT_BUNDLE_IDENTIFIER = com.21dias.app
+
+// Development Team
+DEVELOPMENT_TEAM = 
+
+// App Name
+PRODUCT_NAME = 21 Días

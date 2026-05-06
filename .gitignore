@@ -1,0 +1,9 @@
+*.xcuserstate
+*.xcworkspace
+xcshareddata/
+build/
+Pods/
+*.moved-aside
+*.ipa
+*.dSYM.zip
+.DS_Store
